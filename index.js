@@ -20,3 +20,46 @@ let allWagesFor = function () {
 
     return payable
 }
+
+let createEmployeeRecord = function(arr) {
+    let obj = {
+        firstName: arr[0], 
+        familyName: arr[1], 
+        title: arr[2],
+        payPerHour: arr[3],
+        timeInEvents: [],
+        timeOutEvents: []
+    }
+    return obj
+}
+
+let createEmployeeRecords = function(arr) {
+    let newArr = arr.map(function(arr){
+        createEmployeeRecord(arr)
+    })
+    return newArr
+}
+
+let createTimeInEvent = function(dateStamp) {
+    let [date, hour] = dateStamp.split(' ')
+
+    this.timeInEvents.push({
+        type: "TimeIn",
+        hour: parseInt(hour, 10),
+        date,
+    })
+
+    return this
+}
+
+let createTimeOutEvent = function(dateStamp) {
+    let [date, hour] = dateStamp.split(' ')
+
+    this.timeOutEvents.push({
+        type: "TimeOut",
+        hour: parseInt(hour, 10),
+        date,
+    })
+
+    return this
+}
